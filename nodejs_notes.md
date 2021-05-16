@@ -15,4 +15,9 @@ Sync scenario:
 Step 1 will have to complete finish rendering before step 2 can run.
 (Can be very time consuming)
 
+## What can Node.js do? 
+* Generate dynamic page content
+* Create, open, read, write, delete, and close files on the server
+* Collect form data
+* CRUD data in database.
 
