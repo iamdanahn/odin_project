@@ -21,3 +21,16 @@ Step 1 will have to complete finish rendering before step 2 can run.
 * Collect form data
 * CRUD data in database.
 
+## Node Modules
+Modules are similar to JS libraries
+To use modules, use `require()` with the module
+  ie: `var http = require('http');`
+
+Custom modules can be created with `exports.` like below:
+exports.myDateTime = function () {
+  return Date();
+};
+
+http module contains methods like `.createServer`, which creates a server object.
+When a `.listen(8080)` is attached to the object, it will listen to port 8080 and the server object will execute its contents.
+
