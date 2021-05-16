@@ -23,6 +23,8 @@ Step 1 will have to complete finish rendering before step 2 can run.
 
 ## Node Modules
 Modules are similar to JS libraries
+
+### http module
 To use modules, use `require()` with the module
   ie: `var http = require('http');`
 
@@ -34,3 +36,37 @@ exports.myDateTime = function () {
 http module contains methods like `.createServer`, which creates a server object.
 When a `.listen(8080)` is attached to the object, it will listen to port 8080 and the server object will execute its contents.
 
+### fs module
+fs = File System 
+fs allows CRUD functionality
+
+`fs.readFile()` - read files on the computer
+`fs.appendfile()` - appends content to the end of the specified file. If file doesn't exist, file is created
+    fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });
+
+`fs.open()` - takes a flag for the 2nd arg. "w" is for writing. If file doesn't exist, an empty file is created
+    fs.open('mynewfile2.txt', 'w', function (err, file) {
+      if (err) throw err;
+      console.log('Saved!');
+    });
+
+`fs.writeFile()` - repalces specified file and content if it exists. If file doesn't exist, a new file, with the specified content, is created
+    fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });
+
+`fs.unlink()` - DELETES the file specified
+    fs.unlink('mynewfile2.txt', function (err) {
+      if (err) throw err;
+      console.log('File deleted!');
+    });
+
+`fs.rename()` - RENAMES the file specified
+    fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
+      if (err) throw err;
+      console.log('File Renamed!');
+    });
