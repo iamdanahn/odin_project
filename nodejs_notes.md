@@ -42,31 +42,58 @@ fs allows CRUD functionality
 
 `fs.readFile()` - read files on the computer
 `fs.appendfile()` - appends content to the end of the specified file. If file doesn't exist, file is created
-    fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
-      if (err) throw err;
-      console.log('Saved!');
-    });
+```js
+  fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+```
 
 `fs.open()` - takes a flag for the 2nd arg. "w" is for writing. If file doesn't exist, an empty file is created
-    fs.open('mynewfile2.txt', 'w', function (err, file) {
-      if (err) throw err;
-      console.log('Saved!');
-    });
+```js
+  fs.open('mynewfile2.txt', 'w', function (err, file) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+```
 
 `fs.writeFile()` - repalces specified file and content if it exists. If file doesn't exist, a new file, with the specified content, is created
-    fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
-      if (err) throw err;
-      console.log('Saved!');
-    });
+```js
+  fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+```
 
 `fs.unlink()` - DELETES the file specified
-    fs.unlink('mynewfile2.txt', function (err) {
-      if (err) throw err;
-      console.log('File deleted!');
-    });
+```js
+  fs.unlink('mynewfile2.txt', function (err) {
+    if (err) throw err;
+    console.log('File deleted!');
+  });
+```
 
 `fs.rename()` - RENAMES the file specified
-    fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
-      if (err) throw err;
-      console.log('File Renamed!');
-    });
+```js
+  fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
+    if (err) throw err;
+    console.log('File Renamed!');
+  });
+```
+
+
+### url module
+`var url = require('url');`
+ie:
+```js 
+  var url = require('url');
+  var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
+  var q = url.parse(adr, true);
+
+  console.log(q.host); //returns 'localhost:8080'
+  console.log(q.pathname); //returns '/default.htm'
+  console.log(q.search); //returns '?year=2017&month=february'
+
+  var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
+  console.log(qdata.month); //returns 'february'
+```
