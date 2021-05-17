@@ -97,3 +97,49 @@ ie:
   var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
   console.log(qdata.month); //returns 'february'
 ```
+
+
+## NPM - Node Package manager
+Packages are JS libraries ready to use
+These live in `node_modules` 
+
+To use these packages in js files, simply use `require()` like other modules
+
+
+## Events in Node.js
+Every action on a computer is an event.
+Objects in Node.js can fire events.
+
+ie: readStream fires events when opening and closing files.
+```js
+  var fs = require('fs');
+  var rs = fs.createReadStream('./demofile.txt');
+  rs.on('open', function () {
+    console.log('The file is open');
+  });
+```
+
+Node has a built-in module called "Events" where we can create-, fire-, and listen for- our own events.
+All event properties and methods arae instances of an EventEmitter object
+```js
+  var events = require('events');
+  var eventEmitter = new events.EventEmitter();
+```
+
+Custom Event handlers can be assigned to our own events
+
+```js
+  var events = require('events');
+  var eventEmitter = new events.EventEmitter();
+
+  //Create an event handler:
+  var myEventHandler = function () {
+    console.log('I hear a scream!');
+  }
+
+  //Assign the event handler to an event:
+  eventEmitter.on('scream', myEventHandler);
+
+  //Fire the 'scream' event:
+  eventEmitter.emit('scream');
+```
