@@ -1,3 +1,5 @@
+
+// imports express from node modules
 const express = require('express');
 const app = express();
 const port = 3000;
