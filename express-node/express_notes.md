@@ -9,6 +9,16 @@ Unopinionated frameworks are more "loose" and have fewer restriction on how to p
 Express handles certain situations with middlewares. (there are a LOT)
 
 
+* Writes handlers for different HTTP requests at different routes
+ie: handles get/posts to "/" or "/activity" etc
+
+* Integrates with "view" to generate responses
+
+* Sets common web app settings like 'ports' and locations of templates used to render a response
+
+* Adds middleware 
+
+
 
 
 
