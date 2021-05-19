@@ -24,9 +24,68 @@ ie: handles get/posts to "/" or "/activity" etc
 
 ## Asynchronous
 Node is single threaded, but non-blocking b/c of async.
-Utilize callbacks to for Async situations, but avoid callback hell! (http://callbackhell.com/)
+Utilize callbacks to for Async situations, but avoid callback hell! 
+(http://callbackhell.com/) - LOTS of good notes here
+
+### Route Handlers
+  Handles the '/' route
+```js
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+});
+```
+The Express app object has router handlers for all other HTTP verbs, which are used in the same way.
+delete(), get(), post(), put(), merge(), patch(), etc
+
+`app.all()` - used for any HTTP method.
+```js
+app.all('/secret', function(req, res, next) {
+  console.log('Accessing the secret section ...');
+  next(); // pass control to the next handler
+});
+```
+
+#### express.Router() 
+(https://expressjs.com/en/guide/routing.html#express-router)
+* Routers allow route prefixes to be added to certain endpoints
+  - The below provides access to `/wiki/` and `/wiki/about/`
+
+```js
+// wiki.js - Wiki route module
+const express = require('express');
+const router = express.Router();
+
+// Home page route
+router.get('/', function(req, res) {
+  res.send('Wiki home page');
+});
+
+// About page route
+router.get('/about', function(req, res) {
+  res.send('About this wiki');
+});
+
+module.exports = router;
+
+// Then in the main App.js file
+const wiki = require('./wiki.js');
+// ...
+app.use('/wiki', wiki);
+```
+
+## MIDDLEWARE
 
 
+
+
+
+
+
+------------------------------
+------------------------------
+------------------------------
+
+#### CALL BACK NOTES / USEFUL INFO
 ## How to avoid callback hell
 1. Keep code shallow
     Don't shove everything into one giant piece aka don't nest functions.
@@ -44,6 +103,9 @@ Notes:
 - Handle every single error in every one of your callbacks. Use a linter like standard to help you with this.
 - Create reusable functions and place them in a module to reduce the cognitive load required to understand your code. Splitting your code into small pieces like this also helps you handle errors, write tests, forces you to create a stable and documented public API for your code, and helps with refactoring.
 
+------------------------------
+------------------------------
+------------------------------
 
 
 
