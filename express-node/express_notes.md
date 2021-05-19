@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 });
 ```
 The Express app object has router handlers for all other HTTP verbs, which are used in the same way.
-delete(), get(), post(), put(), merge(), patch(), etc
+`delete(), get(), post(), put(), merge(), patch(), etc`
 
 `app.all()` - used for any HTTP method.
 ```js
@@ -74,9 +74,50 @@ app.use('/wiki', wiki);
 ```
 
 ## MIDDLEWARE
+https://expressjs.com/en/resources/middleware.html
+* HTTP request-response cycles usually end by returning a response to the client.
+* Middlewares function typically perform ops on the req or res and then calls the next function in the "stack".
+* Middleware and Routing functions are called in the order declared.
+  Order may be important so be mindful!
+* Almost always, middleware is called before setting routes or else router handlers do not have access to middleware functionality
 
+* MW fn's have a third argument, `next`
+`next()` - pass control to the next middleware (or else req is left hangin!)
 
+`npm install ______`
+3rd party middlewares are intalled via NPM
 
+`app.use()` - used to call the middleware to the stack for all http responses
+`app.get` or other verbs can be specified if mw is specific
+
+```js
+const express = require('express');
+const logger = require('morgan');
+const app = express();
+app.use(logger('dev'));
+
+--- OR ---
+
+const express = require('express');
+const app = express();
+
+// An example middleware function
+let a_middleware_function = function(req, res, next) {
+  // ... perform some operations
+  next(); // Call next() so Express will call the next middleware function in the chain.
+}
+
+// Function added with use() for all routes and verbs
+app.use(a_middleware_function);
+
+// Function added with use() for a specific route
+app.use('/someroute', a_middleware_function);
+
+// A middleware function added for a specific HTTP verb and route
+app.get('/', a_middleware_function);
+
+app.listen(3000);
+```
 
 
 
