@@ -149,7 +149,8 @@ Then access data directly through the DB connection
 or grab data through a `Object Relational Mapper (ORM)`.
 With the ORM, the concepts of "objects" or "models" stay making it "easier" to parse through the DB
 
-
+## Express App Generator
+`express (insert project name)` - auto creates express project for you
 
 
 

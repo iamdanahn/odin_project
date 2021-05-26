@@ -50,39 +50,39 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 
-app.use('/', (req, res) => {
-  fs.readFile('index.html', (err, data) => {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'})
-      return res.end('404 Content Not Found')
-    }
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end()
-	})
-})
-app.use('/contact-me', (req, res) => {
-  fs.readFile("contact-me.html", function (err, data) {
-    if (err) {
-      res.writeHead(404, { "Content-Type": "text/html" });
-      return res.end("404 Content Not Found");
-    }
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.write(data);
-    return res.end();
-  });
-})
-app.use('/about', (req, res) => {
-  fs.readFile("about.html", function (err, data) {
-    if (err) {
-      res.writeHead(404, { "Content-Type": "text/html" });
-      return res.end("404 Content Not Found");
-    }
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.write(data);
-    return res.end();
-  });
-})
+app.get("/", (req, res) => {
+	fs.readFile("index.html", (err, data) => {
+		if (err) {
+			res.writeHead(404, { "Content-Type": "text/html" });
+			return res.end("404 Content Not Found");
+		}
+		res.writeHead(200, { "Content-Type": "text/html" });
+		res.write(data);
+		return res.end();
+	});
+});
+app.get("/contact-me", (req, res) => {
+	fs.readFile("contact-me.html", function (err, data) {
+		if (err) {
+			res.writeHead(404, { "Content-Type": "text/html" });
+			return res.end("404 Content Not Found");
+		}
+		res.writeHead(200, { "Content-Type": "text/html" });
+		res.write(data);
+		return res.end();
+	});
+});
+app.get("/about", (req, res) => {
+	fs.readFile("about.html", function (err, data) {
+		if (err) {
+			res.writeHead(404, { "Content-Type": "text/html" });
+			return res.end("404 Content Not Found");
+		}
+		res.writeHead(200, { "Content-Type": "text/html" });
+		res.write(data);
+		return res.end();
+	});
+});
 
 const port = 3000;
 app.listen(port, () => {
