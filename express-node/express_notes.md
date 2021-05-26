@@ -121,6 +121,37 @@ app.listen(3000);
 
 
 
+## Serving STATIC files
+`express.static()` - express' middleware for static files like images, css and JS.
+
+ie: `app.use(express.static('public'))`
+Allows any files in 'public' to be retrieved like below:
+```
+http://localhost:3000/images/dog.jpg
+http://localhost:3000/css/style.css
+http://localhost:3000/js/app.js
+http://localhost:3000/about.html
+```
+prefixes can be added to make it preload with a certain prefix
+`app.use('/media', express.static('public'))`
+http://localhost:3000/media/images/dog.jpg
+http://localhost:3000/media/video/cat.mp4
+http://localhost:3000/media/cry.mp3
+
+
+
+## Databases
+Express can use any DB supported by Node.
+ie: MongoDB, PostgreSQL, MySQL, Redis, SQLite
+
+Install it by NPM (`npm install mongodb`)
+Then access data directly through the DB connection
+or grab data through a `Object Relational Mapper (ORM)`.
+With the ORM, the concepts of "objects" or "models" stay making it "easier" to parse through the DB
+
+
+
+
 
 ------------------------------
 ------------------------------
